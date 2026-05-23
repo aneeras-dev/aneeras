@@ -11,7 +11,14 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Lenis handles smooth scrolling — keep native scroll-behavior off */
+}
+
+/* Hide OS cursor on desktop; custom cursor takes over */
+@media (min-width: 1024px) {
+  * {
+    cursor: none !important;
+  }
 }
 
 body {

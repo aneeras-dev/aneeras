@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import CursorGlow from '@/components/ui/CursorGlow'
+import SmoothScroll from '@/components/ui/SmoothScroll'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -82,11 +83,13 @@ export default function RootLayout({
       className={`${poppins.variable} ${inter.variable} ${spaceGrotesk.variable}`}
     >
       <body className="bg-dark text-cream antialiased overflow-x-hidden">
-        <CursorGlow />
-        <ScrollProgress />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <CursorGlow />
+          <ScrollProgress />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   )
