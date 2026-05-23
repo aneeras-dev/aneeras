@@ -21,6 +21,9 @@
     "tailwind-merge": "^2.4.0",
     "lucide-react": "^0.400.0"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",

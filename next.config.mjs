@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['tripknot.in'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'tripknot.in',
+      },
+    ],
   },
 }
 
