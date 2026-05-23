@@ -12,53 +12,45 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ]
 
-const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#'
-
-function useLetterShuffle(text: string, active: boolean) {
-  const [output, setOutput] = useState(text)
-  const timerRef = useRef<NodeJS.Timeout | null>(null)
-  const frameRef = useRef(0)
+// Splits "Aneeras" so only the two 'e' chars get the swap animation
+function LogoLetters({ hovered }: { hovered: boolean }) {
+  const eRef = useRef<HTMLSpanElement>(null)
+  const [eW, setEW] = useState(13) // fallback until measured
 
   useEffect(() => {
-    if (timerRef.current) clearInterval(timerRef.current)
+    if (eRef.current) setEW(eRef.current.offsetWidth)
+  }, [])
 
-    if (!active) {
-      setOutput(text)
-      frameRef.current = 0
-      return
-    }
+  const spring = {
+    type: 'spring' as const,
+    stiffness: 520,
+    damping: 24,
+    mass: 0.8,
+  }
 
-    frameRef.current = 0
-    const FRAMES_PER_CHAR = 3
-    const totalFrames = text.length * FRAMES_PER_CHAR + 4
-
-    timerRef.current = setInterval(() => {
-      frameRef.current++
-      const f = frameRef.current
-
-      setOutput(
-        text
-          .split('')
-          .map((ch, i) => {
-            if (ch === ' ') return ' '
-            if (f >= (i + 1) * FRAMES_PER_CHAR) return ch
-            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
-          })
-          .join('')
-      )
-
-      if (f >= totalFrames) {
-        clearInterval(timerRef.current!)
-        setOutput(text)
-      }
-    }, 45)
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
-    }
-  }, [active, text])
-
-  return output
+  return (
+    <span className="font-space font-bold text-xl text-white tracking-tight leading-none select-none">
+      An
+      {/* first e — moves RIGHT on hover */}
+      <motion.span
+        ref={eRef}
+        style={{ display: 'inline-block', verticalAlign: 'baseline' }}
+        animate={{ x: hovered ? eW : 0, y: hovered ? -10 : 0 }}
+        transition={spring}
+      >
+        e
+      </motion.span>
+      {/* second e — moves LEFT on hover, tiny stagger for natural feel */}
+      <motion.span
+        style={{ display: 'inline-block', verticalAlign: 'baseline' }}
+        animate={{ x: hovered ? -eW : 0, y: hovered ? -10 : 0 }}
+        transition={{ ...spring, delay: hovered ? 0.025 : 0 }}
+      >
+        e
+      </motion.span>
+      ras
+    </span>
+  )
 }
 
 function AneerasIcon({ className }: { className?: string }) {
@@ -96,7 +88,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [logoHovered, setLogoHovered] = useState(false)
   const pathname = usePathname()
-  const shuffledText = useLetterShuffle('Aneeras', logoHovered)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24)
@@ -137,19 +128,19 @@ export default function Navbar() {
               onMouseEnter={() => setLogoHovered(true)}
               onMouseLeave={() => setLogoHovered(false)}
             >
-              <div
+              <motion.div
                 className={cn(
                   'relative w-9 h-9 flex-shrink-0 transition-all duration-300',
                   'drop-shadow-[0_0_8px_rgba(75,74,168,0.5)]',
-                  'group-hover:drop-shadow-[0_0_16px_rgba(139,140,201,0.7)]',
-                  'group-hover:scale-110'
+                  'group-hover:drop-shadow-[0_0_16px_rgba(139,140,201,0.7)]'
                 )}
+                animate={{ scale: logoHovered ? 1.1 : 1 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               >
                 <AneerasIcon className="w-full h-full" />
-              </div>
-              <span className="font-space font-bold text-xl text-white tracking-tight tabular-nums min-w-[5.5rem]">
-                {shuffledText}
-              </span>
+              </motion.div>
+
+              <LogoLetters hovered={logoHovered} />
             </Link>
 
             {/* Desktop Nav */}
