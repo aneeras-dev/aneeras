@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Send, CheckCircle, Loader2 } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Send, CheckCircle, Loader2, AlertCircle } from 'lucide-react'
 
 const subjects = [
   'General Inquiry',
@@ -20,6 +20,8 @@ interface FormState {
   message: string
 }
 
+type Status = 'idle' | 'loading' | 'success' | 'error'
+
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>({
     name: '',
@@ -27,7 +29,8 @@ export default function ContactForm() {
     subject: subjects[0],
     message: '',
   })
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
+  const [status, setStatus] = useState<Status>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
   const [focusedField, setFocusedField] = useState<string | null>(null)
 
   const handleChange = (
@@ -39,9 +42,28 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1800))
-    setStatus('success')
+    setErrorMsg('')
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setErrorMsg(data.error ?? 'Something went wrong. Please try again.')
+        setStatus('error')
+        return
+      }
+
+      setStatus('success')
+    } catch {
+      setErrorMsg('Network error. Please check your connection and try again.')
+      setStatus('error')
+    }
   }
 
   const inputBase =
@@ -74,6 +96,7 @@ export default function ContactForm() {
           Thanks for reaching out, {form.name.split(' ')[0]}! We'll get back to you within 24 hours.
         </p>
         <button
+          type="button"
           onClick={() => {
             setStatus('idle')
             setForm({ name: '', email: '', subject: subjects[0], message: '' })
@@ -186,6 +209,18 @@ export default function ContactForm() {
           Your Message
         </label>
       </div>
+
+      {/* Error banner */}
+      {status === 'error' && (
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-center gap-3 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 font-inter text-sm"
+        >
+          <AlertCircle size={16} className="flex-shrink-0" />
+          {errorMsg}
+        </motion.div>
+      )}
 
       {/* Submit */}
       <button

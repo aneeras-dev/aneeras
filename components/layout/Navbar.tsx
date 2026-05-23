@@ -1,10 +1,9 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
-import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
@@ -13,10 +12,91 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ]
 
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#'
+
+function useLetterShuffle(text: string, active: boolean) {
+  const [output, setOutput] = useState(text)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const frameRef = useRef(0)
+
+  useEffect(() => {
+    if (timerRef.current) clearInterval(timerRef.current)
+
+    if (!active) {
+      setOutput(text)
+      frameRef.current = 0
+      return
+    }
+
+    frameRef.current = 0
+    const FRAMES_PER_CHAR = 3
+    const totalFrames = text.length * FRAMES_PER_CHAR + 4
+
+    timerRef.current = setInterval(() => {
+      frameRef.current++
+      const f = frameRef.current
+
+      setOutput(
+        text
+          .split('')
+          .map((ch, i) => {
+            if (ch === ' ') return ' '
+            if (f >= (i + 1) * FRAMES_PER_CHAR) return ch
+            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
+          })
+          .join('')
+      )
+
+      if (f >= totalFrames) {
+        clearInterval(timerRef.current!)
+        setOutput(text)
+      }
+    }, 45)
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [active, text])
+
+  return output
+}
+
+function AneerasIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 112 116"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect fill="white" x="8.08" y="27.56" width="24.23" height="66.84" rx="12.11" ry="12.11" />
+      <rect fill="white" x="80.76" y="27.56" width="24.23" height="66.84" rx="12.11" ry="12.11" />
+      <path
+        fill="#cbd3e5"
+        d="M48.16,48.93h8.37s0,21.66,0,21.66h-8.48c-1.42-.22-2.31-1.28-2.41-2.7v-16.21c.01-1.36,1.07-2.75,2.51-2.75Z"
+      />
+      <path
+        fill="#cbd3e5"
+        d="M56.53,23.84v14.2h-11.41c-5.59.34-9.92,4.66-10.31,10.25l.06,22.99c.01,5.11,5.02,10.09,9.87,10.11l11.81.06v16.67c0,6.68-5.43,12.11-12.11,12.11s-12.12-5.43-12.12-12.11V23.84c0-6.69,5.43-12.12,12.12-12.12,3.34,0,6.37,1.36,8.55,3.55,2.2,2.19,3.55,5.21,3.55,8.57Z"
+      />
+      <path
+        fill="#9caed9"
+        d="M67.4,51.5v16.49c0,1.36-1.19,2.59-2.54,2.59h-8.32s0-21.66,0-21.66h8.31c1.32,0,2.56,1.26,2.56,2.58Z"
+      />
+      <path
+        fill="#9caed9"
+        d="M80.76,23.84v74.28c0,6.68-5.41,12.11-12.11,12.11s-12.12-5.43-12.12-12.11v-16.67h.01l3-3c.16-.13.29-.27.43-.44l7.42-7.37.03,10.8h10.84s0-10.84,0-10.84l-10.82-.03,4.75-4.76.83-.83,1.7-1.69,3.53-3.53v-10.85c0-.61-.03-5.57-4.1-8.71-2.77-2.13-5.78-2.16-6.75-2.14h-10.89v-14.2c0-6.69,5.43-12.12,12.12-12.12,3.34,0,6.37,1.36,8.57,3.55,2.19,2.19,3.54,5.21,3.54,8.57Z"
+      />
+    </svg>
+  )
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [logoHovered, setLogoHovered] = useState(false)
   const pathname = usePathname()
+  const shuffledText = useLetterShuffle('Aneeras', logoHovered)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24)
@@ -51,18 +131,24 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="relative w-9 h-9 flex-shrink-0 drop-shadow-[0_0_8px_rgba(75,74,168,0.5)] group-hover:drop-shadow-[0_0_14px_rgba(139,140,201,0.6)] transition-all duration-300">
-                <Image
-                  src="/logo/aneeras-icon.png"
-                  alt="Aneeras"
-                  fill
-                  className="object-contain"
-                  priority
-                />
+            <Link
+              href="/"
+              className="flex items-center gap-2.5 group"
+              onMouseEnter={() => setLogoHovered(true)}
+              onMouseLeave={() => setLogoHovered(false)}
+            >
+              <div
+                className={cn(
+                  'relative w-9 h-9 flex-shrink-0 transition-all duration-300',
+                  'drop-shadow-[0_0_8px_rgba(75,74,168,0.5)]',
+                  'group-hover:drop-shadow-[0_0_16px_rgba(139,140,201,0.7)]',
+                  'group-hover:scale-110'
+                )}
+              >
+                <AneerasIcon className="w-full h-full" />
               </div>
-              <span className="font-space font-bold text-xl text-white tracking-tight">
-                Aneeras
+              <span className="font-space font-bold text-xl text-white tracking-tight tabular-nums min-w-[5.5rem]">
+                {shuffledText}
               </span>
             </Link>
 
@@ -109,6 +195,7 @@ export default function Navbar() {
 
             {/* Mobile burger */}
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden relative w-10 h-10 rounded-xl flex items-center justify-center text-white hover:bg-white/10 transition-colors duration-200"
               aria-label="Toggle navigation"
