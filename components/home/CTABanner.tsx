@@ -40,7 +40,7 @@ export default function CTABanner() {
           </h2>
 
           <p className="font-inter text-white/50 text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Whether you're a traveler ready for your next adventure or a partner who shares our vision — we'd love to hear from you.
+            Whether you're a potential partner, an early adopter, or someone who believes in what we're building — we'd love to connect.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -52,12 +52,10 @@ export default function CTABanner() {
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
             <Link
-              href="https://tripknot.in"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/about"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/15 text-white/80 hover:text-white hover:border-white/30 hover:bg-white/5 font-inter font-medium text-base transition-all duration-300"
             >
-              Try Tripknot Free
+              Learn About Us
             </Link>
           </div>
         </motion.div>

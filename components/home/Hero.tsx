@@ -9,9 +9,9 @@ import FloatingBlobs from '@/components/ui/FloatingBlobs'
 import { staggerContainer, staggerItem, fadeInRight } from '@/lib/animations'
 
 const stats = [
-  { value: '10K+', label: 'Active Users' },
-  { value: '50+', label: 'Destinations' },
-  { value: '4.9★', label: 'App Rating' },
+  { value: '10K+', label: 'Product Users' },
+  { value: '2022', label: 'Founded' },
+  { value: '4.9★', label: 'User Rating' },
 ]
 
 export default function Hero() {
@@ -59,7 +59,7 @@ export default function Hero() {
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-purple/15 border border-royal-purple/25 mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-soft-lavender animate-pulse" />
                 <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide">
-                  Introducing Tripknot 2.0
+                  Product-first Startup · Est. 2022
                 </span>
               </span>
             </motion.div>
@@ -85,22 +85,20 @@ export default function Hero() {
             {/* CTAs */}
             <motion.div variants={staggerItem} className="flex flex-wrap items-center gap-4">
               <Link
-                href="https://tripknot.in"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/about"
                 className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-accent-gradient text-white font-inter font-semibold text-sm transition-all duration-300 hover:shadow-glow hover:scale-[1.03] active:scale-[0.98]"
               >
-                Explore Tripknot
+                Our Story
                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
               <Link
-                href="/about"
+                href="/contact"
                 className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/15 text-white/70 hover:text-white hover:border-white/30 hover:bg-white/5 font-inter font-medium text-sm transition-all duration-300"
               >
                 <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
                   <Play size={9} className="fill-white ml-0.5" />
                 </span>
-                Our Story
+                Get in Touch
               </Link>
             </motion.div>
 

@@ -53,11 +53,11 @@ export default function Testimonials() {
             <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide uppercase">Testimonials</span>
           </span>
           <h2 className="font-space font-bold text-4xl sm:text-5xl lg:text-6xl text-white mb-5 tracking-tight">
-            Loved by{' '}
-            <span className="text-gradient">Travelers</span>
+            Loved by Our{' '}
+            <span className="text-gradient">Early Users</span>
           </h2>
           <p className="font-inter text-white/50 text-lg max-w-xl mx-auto">
-            Real stories from people using Tripknot to create unforgettable journeys.
+            What our early community says about the products we build at Aneeras.
           </p>
         </motion.div>
 
@@ -114,7 +114,7 @@ export default function Testimonials() {
         >
           <div className="glass rounded-2xl p-8 max-w-3xl mx-auto glow-card">
             <p className="font-space font-bold text-white/90 text-xl sm:text-2xl leading-relaxed">
-              &ldquo;Our vision is to make travel planning as effortless and joyful as the trip itself. Tripknot is just the beginning.&rdquo;
+              &ldquo;We build products that remove friction from real-world experiences. Tripknot is our first step — there's a lot more ahead.&rdquo;
             </p>
             <div className="mt-5 font-inter text-white/40 text-sm">— The Aneeras Team</div>
           </div>

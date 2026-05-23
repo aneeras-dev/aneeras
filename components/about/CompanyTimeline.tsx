@@ -50,8 +50,8 @@ const timeline = [
   {
     year: '2025',
     quarter: 'Q1',
-    title: 'What\'s Next',
-    description: 'We\'re expanding to new markets, building new products, and growing the Aneeras family. The best is yet to come.',
+    title: "What's Next",
+    description: "Aneeras is growing beyond Tripknot. New products are in the pipeline, new markets on the horizon. We're just getting started as a company.",
     color: 'bg-soft-lavender',
     textColor: 'text-soft-lavender',
   },

@@ -15,8 +15,11 @@ const footerLinks = {
     { label: 'Coming Soon', href: '#' },
   ],
   Legal: [
-    { label: 'Privacy Policy', href: '#' },
-    { label: 'Terms of Service', href: '#' },
+    { label: 'Privacy Policy', href: '/legal/privacy-policy.pdf', external: true },
+    { label: 'Terms of Service', href: '/legal/terms-of-Use.pdf', external: true },
+    { label: 'Cookie Policy', href: '/legal/Cookie.pdf', external: true },
+    { label: 'Data Privacy', href: '/legal/data-privacy.pdf', external: true },
+    { label: 'EULA', href: '/legal/eula.pdf', external: true },
   ],
 }
 
@@ -79,7 +82,7 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category} className="col-span-1">
-              <h4 className="font-space font-semibold text-white/80 text-sm mb-4 uppercase tracking-wider text-xs">
+              <h4 className="font-space font-semibold text-white/80 text-xs mb-4 uppercase tracking-wider">
                 {category}
               </h4>
               <ul className="space-y-3">
