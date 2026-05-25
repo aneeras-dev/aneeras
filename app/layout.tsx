@@ -7,6 +7,7 @@ import Footer from '@/components/layout/Footer'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import CursorGlow from '@/components/ui/CursorGlow'
 import SmoothScroll from '@/components/ui/SmoothScroll'
+import JsonLd from '@/components/seo/JsonLd'
 
 const GTM_ID = 'GTM-T46BLM7P'
 const GA_ID  = 'G-4T1QBN67SK'
@@ -32,38 +33,39 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://aneeras.com'),
   title: {
     default: 'Aneeras — Building Digital Products That Move People',
     template: '%s | Aneeras',
   },
   description:
-    'Aneeras creates next-generation applications focused on real-world experiences and modern technology. Home of Tripknot — the smart travel companion.',
+    'Aneeras is a product-first startup building next-generation digital experiences. Home of Tripknot — the AI-powered smart travel companion for modern explorers.',
   keywords: [
-    'Aneeras',
-    'Tripknot',
-    'travel app',
-    'digital products',
-    'startup',
-    'Next.js',
-    'modern web',
+    'Aneeras', 'Tripknot', 'travel app', 'AI travel planner',
+    'digital products', 'tech startup', 'product design', 'mobile app',
+    'trip planning', 'smart travel', 'modern web', 'Next.js startup',
   ],
-  authors: [{ name: 'Aneeras' }],
+  authors: [{ name: 'Aneeras', url: 'https://aneeras.com' }],
   creator: 'Aneeras',
+  publisher: 'Aneeras',
+  alternates: { canonical: 'https://aneeras.com' },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://aneeras.com',
     title: 'Aneeras — Building Digital Products That Move People',
     description:
-      'Aneeras creates next-generation applications focused on real-world experiences and modern technology.',
+      'Aneeras is a product-first startup building next-generation digital experiences. Home of Tripknot — the AI-powered smart travel companion.',
     siteName: 'Aneeras',
+    images: [{ url: '/logo/aneeras-icon.png', width: 512, height: 512, alt: 'Aneeras' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Aneeras — Building Digital Products That Move People',
     description:
-      'Aneeras creates next-generation applications focused on real-world experiences and modern technology.',
+      'Aneeras is a product-first startup building next-generation digital experiences. Home of Tripknot — the AI-powered smart travel companion.',
     creator: '@aneeras',
+    images: ['/logo/aneeras-icon.png'],
   },
   icons: {
     icon: '/logo/aneeras-icon.png',
@@ -73,6 +75,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 }
 
@@ -122,6 +125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             className="hidden"
           />
         </noscript>
+        <JsonLd />
         <SmoothScroll>
           <CursorGlow />
           <ScrollProgress />

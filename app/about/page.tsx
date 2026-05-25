@@ -5,9 +5,20 @@ import AboutStats from '@/components/about/AboutStats'
 import CTABanner from '@/components/home/CTABanner'
 
 export const metadata: Metadata = {
-  title: 'About — Aneeras',
+  title: 'About',
   description:
-    'Meet the team behind Aneeras — our mission, vision, the people building it, and the numbers that show we\'re just getting started.',
+    'Learn about Aneeras — a product-first startup founded in 2026. Our mission, vision, core values, and the story behind building Tripknot and future digital products.',
+  keywords: ['about Aneeras', 'startup story', 'product-first company', 'Tripknot founders', 'digital product studio'],
+  alternates: { canonical: 'https://aneeras.com/about' },
+  openGraph: {
+    title: 'About Aneeras — Our Story, Mission & Vision',
+    description: 'Learn about Aneeras — a product-first startup on a mission to build digital experiences that genuinely move people.',
+    url: 'https://aneeras.com/about',
+  },
+  twitter: {
+    title: 'About Aneeras — Our Story, Mission & Vision',
+    description: 'Learn about Aneeras — a product-first startup on a mission to build digital experiences that genuinely move people.',
+  },
 }
 
 export default function AboutPage() {

@@ -4,9 +4,20 @@ import ContactForm from '@/components/contact/ContactForm'
 import ContactInfo from '@/components/contact/ContactInfo'
 
 export const metadata: Metadata = {
-  title: 'Contact — Aneeras',
+  title: 'Contact',
   description:
-    "Get in touch with Aneeras. Whether you have a question, a partnership idea, or just want to say hi — we'd love to hear from you.",
+    'Get in touch with Aneeras. Whether you have a partnership idea, a product question, or just want to say hi — we respond within 24 hours.',
+  keywords: ['contact Aneeras', 'Aneeras support', 'partnership', 'get in touch', 'startup contact'],
+  alternates: { canonical: 'https://aneeras.com/contact' },
+  openGraph: {
+    title: 'Contact Aneeras — Let\'s Build Together',
+    description: 'Have an idea or a question? Reach out to the Aneeras team — we\'d love to connect.',
+    url: 'https://aneeras.com/contact',
+  },
+  twitter: {
+    title: 'Contact Aneeras — Let\'s Build Together',
+    description: 'Have an idea or a question? Reach out to the Aneeras team — we\'d love to connect.',
+  },
 }
 
 export default function ContactPage() {
