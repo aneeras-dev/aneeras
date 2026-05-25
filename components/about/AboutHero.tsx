@@ -62,7 +62,7 @@ export default function AboutHero() {
             </span>
           </motion.div>
 
-          {/* Headline with char animation */}
+          {/* Headline */}
           <div className="overflow-hidden mb-2">
             <h1 className="font-space font-bold text-5xl sm:text-6xl xl:text-7xl text-white leading-[1.08] tracking-tight">
               {line1.split('').map((char, i) => (
@@ -75,18 +75,13 @@ export default function AboutHero() {
               ))}
             </h1>
           </div>
-          <div className="overflow-hidden mb-8">
-            <h1 className="font-space font-bold text-5xl sm:text-6xl xl:text-7xl text-gradient leading-[1.08] tracking-tight">
-              {line2.split('').map((char, i) => (
-                <span
-                  key={i}
-                  className={`char inline-block ${char === ' ' ? 'whitespace-pre' : ''}`}
-                >
-                  {char}
-                </span>
-              ))}
-            </h1>
-          </div>
+          {/* Gradient line as whole element — bg-clip-text breaks with per-char spans */}
+          <motion.h1
+            variants={staggerItem}
+            className="font-space font-bold text-5xl sm:text-6xl xl:text-7xl text-gradient leading-[1.08] tracking-tight mb-8"
+          >
+            {line2}
+          </motion.h1>
 
           {/* Subtext */}
           <motion.p
