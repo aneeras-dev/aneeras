@@ -5,9 +5,6 @@ import { Send, CheckCircle, Loader2, AlertCircle } from 'lucide-react'
 
 const subjects = [
   'General Inquiry',
-  'Partnership',
-  'Press & Media',
-  'Tripknot Feedback',
   'Investment',
   'Career',
   'Other',
@@ -93,7 +90,7 @@ export default function ContactForm() {
         </motion.div>
         <h3 className="font-space font-bold text-white text-2xl">Message Sent!</h3>
         <p className="font-inter text-white/50 text-sm max-w-xs leading-relaxed">
-          Thanks for reaching out, {form.name.split(' ')[0]}! We'll get back to you within 24 hours.
+          Thanks, {form.name.split(' ')[0]}! A confirmation has been sent to <span className="text-soft-lavender">{form.email}</span>. We'll get back to you within 24 hours.
         </p>
         <button
           type="button"

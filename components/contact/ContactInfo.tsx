@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Instagram } from 'lucide-react'
+import { Mail, Phone, MapPin, Twitter, Linkedin, } from 'lucide-react'
 import GlowCard from '@/components/ui/GlowCard'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 
@@ -29,11 +29,19 @@ const contactDetails = [
 ]
 
 const socials = [
-  { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/aneeras', color: 'hover:text-blue-400' },
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/aneeras', color: 'hover:text-blue-500' },
-  { icon: Github, label: 'GitHub', href: 'https://github.com/aneeras', color: 'hover:text-white' },
-  { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/aneeras', color: 'hover:text-pink-400' },
-]
+  {
+    icon: Twitter,
+    label: "Twitter",
+    href: "https://twitter.com/aneerasofficial",
+    color: "hover:text-blue-400",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/aneeras/",
+    color: "hover:text-blue-500",
+  },
+];
 
 export default function ContactInfo() {
   return (
