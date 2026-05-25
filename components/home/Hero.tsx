@@ -4,13 +4,13 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight, Play } from 'lucide-react'
 import { gsap } from 'gsap'
-import PhoneMockup from '@/components/ui/PhoneMockup'
+import ParticleField from '@/components/ui/ParticleField'
 import FloatingBlobs from '@/components/ui/FloatingBlobs'
-import { staggerContainer, staggerItem, fadeInRight } from '@/lib/animations'
+import { staggerContainer, staggerItem } from '@/lib/animations'
 
 const stats = [
   { value: '10K+', label: 'Product Users' },
-  { value: '2022', label: 'Founded' },
+  { value: '2026', label: 'Founded' },
   { value: '4.9★', label: 'User Rating' },
 ]
 
@@ -37,6 +37,11 @@ export default function Hero() {
       {/* Animated blobs */}
       <FloatingBlobs />
 
+      {/* Full-background particle network */}
+      <div className="absolute inset-0 pointer-events-none">
+        <ParticleField />
+      </div>
+
       {/* Hero gradient */}
       <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
 
@@ -46,21 +51,19 @@ export default function Hero() {
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark to-transparent pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-28 lg:pt-32">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          {/* Left: Content */}
+      <div className="relative z-10 w-full container-custom py-20 pt-28 lg:pt-32">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
+            className="max-w-xl lg:max-w-6xl text-left"
           >
             {/* Badge */}
             <motion.div variants={staggerItem}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-purple/15 border border-royal-purple/25 mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-soft-lavender animate-pulse" />
                 <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide">
-                  Product-first Startup · Est. 2022
-                </span>
+                  Product-first Startup · Est. 2026                </span>
               </span>
             </motion.div>
 
@@ -70,14 +73,13 @@ export default function Hero() {
               className="font-space font-bold text-5xl sm:text-6xl xl:text-7xl text-white leading-[1.08] tracking-tight mb-6"
             >
               Building Digital
-              <span className="block text-gradient">Products That</span>
-              Move People.
+              <span className="block text-gradient">Products That Move People.</span>
             </motion.h1>
 
             {/* Subtext */}
             <motion.p
               variants={staggerItem}
-              className="font-inter text-white/55 text-lg lg:text-xl leading-relaxed mb-10 max-w-[500px]"
+              className="font-inter text-white/55 text-lg lg:text-xl leading-relaxed mb-10 max-w-4xl"
             >
               Aneeras creates next-generation applications focused on real-world experiences and modern technology. We build for the humans behind the screen.
             </motion.p>
@@ -115,60 +117,6 @@ export default function Hero() {
               ))}
             </motion.div>
           </motion.div>
-
-          {/* Right: Phone mockup */}
-          <motion.div
-            variants={fadeInRight}
-            initial="hidden"
-            animate="visible"
-            className="flex justify-center lg:justify-end relative"
-          >
-            {/* Glow behind phone */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-80 h-80 bg-royal-purple/25 rounded-full blur-[100px]" />
-            </div>
-
-            <div className="relative">
-              {/* Floating phone */}
-              <motion.div
-                animate={{ y: [0, -18, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <PhoneMockup />
-              </motion.div>
-
-              {/* Floating card: Trip planned */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-                className="absolute -left-12 top-1/4 glass rounded-2xl px-4 py-3 shadow-glass"
-              >
-                <p className="text-white font-inter text-[11px] font-semibold">✈️ Trip Planned!</p>
-                <p className="text-white/50 font-inter text-[10px] mt-0.5">Bali, Indonesia</p>
-              </motion.div>
-
-              {/* Floating card: AI suggestions */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-                className="absolute -right-4 bottom-1/4 glass rounded-2xl px-4 py-3 shadow-glass"
-              >
-                <p className="text-white font-inter text-[11px] font-semibold">🤖 AI Matched</p>
-                <p className="text-white/50 font-inter text-[10px] mt-0.5">3 Hotels Found</p>
-              </motion.div>
-
-              {/* Rating badge */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-                className="absolute -left-6 bottom-1/3 glass rounded-2xl px-3 py-2 shadow-glass"
-              >
-                <p className="text-yellow-400 text-sm font-bold">★ 4.9</p>
-                <p className="text-white/50 font-inter text-[9px]">App Store</p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
       </div>
 
       {/* Scroll hint */}

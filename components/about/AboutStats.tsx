@@ -4,12 +4,12 @@ import AnimatedCounter from '@/components/ui/AnimatedCounter'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 
 const stats = [
-  { end: 10000, suffix: '+', label: 'Active Users', icon: '👥', description: 'travelers on Tripknot' },
-  { end: 50, suffix: '+', label: 'Destinations', icon: '🌍', description: 'cities covered' },
-  { end: 2000, suffix: '+', label: 'Trips Planned', icon: '✈️', description: 'memorable journeys' },
-  { end: 98, suffix: '%', label: 'Satisfaction', icon: '⭐', description: 'user happiness rate' },
-  { end: 12, suffix: '+', label: 'Team Members', icon: '🧑‍💻', description: 'passionate builders' },
-  { end: 3, suffix: 'x', label: 'YoY Growth', icon: '📈', description: 'year-over-year growth' },
+  { end: 2026,  suffix: '',   label: 'Year Founded',       icon: '🚀', description: 'Born with a bold idea' },
+  { end: 1,     suffix: '',   label: 'Flagship Product',   icon: '📱', description: 'Tripknot — smart travel' },
+  { end: 5,     suffix: '+',  label: 'Team Members',       icon: '🧑‍💻', description: 'Builders & dreamers' },
+  { end: 10,    suffix: 'K+', label: 'Early Users',        icon: '👥', description: 'Beta community growing' },
+  { end: 4,     suffix: '.9★',label: 'User Rating',        icon: '⭐', description: 'Loved from day one' },
+  { end: 2,     suffix: '+',  label: 'Products in Pipeline', icon: '🔭', description: 'Beyond travel' },
 ]
 
 export default function AboutStats() {
@@ -28,14 +28,14 @@ export default function AboutStats() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-purple/15 border border-royal-purple/25 mb-5">
-            <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide uppercase">By the Numbers</span>
+            <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide uppercase">Aneeras by the Numbers</span>
           </span>
           <h2 className="font-space font-bold text-4xl sm:text-5xl text-white mb-4 tracking-tight">
-            Traction &{' '}
-            <span className="text-gradient">Impact</span>
+            Early Days,{' '}
+            <span className="text-gradient">Real Momentum</span>
           </h2>
           <p className="font-inter text-white/50 text-lg max-w-xl mx-auto">
-            Numbers that reflect the real impact Aneeras is having on the world.
+            We're just getting started — and the numbers already say something.
           </p>
         </motion.div>
 

@@ -3,7 +3,11 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import FloatingBlobs from '@/components/ui/FloatingBlobs'
+import ParticleField from '@/components/ui/ParticleField'
 import { staggerContainer, staggerItem } from '@/lib/animations'
+
+const line1 = 'Our Story.'
+const line2 = 'Our Mission & Vision.'
 
 export default function AboutHero() {
   const ref = useRef<HTMLDivElement>(null)
@@ -14,7 +18,7 @@ export default function AboutHero() {
         opacity: 0,
         y: 60,
         duration: 0.6,
-        stagger: 0.02,
+        stagger: 0.025,
         ease: 'power3.out',
         delay: 0.3,
       })
@@ -23,31 +27,57 @@ export default function AboutHero() {
     return () => ctx.revert()
   }, [])
 
-  const headline = 'Our Story. Our Mission.'
-
   return (
-    <section ref={ref} className="relative min-h-[70vh] flex items-center overflow-hidden bg-dark pt-20">
+    <section
+      ref={ref}
+      className="relative min-h-[75vh] flex items-center overflow-hidden bg-dark"
+    >
       <FloatingBlobs />
-      <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
-      <div className="hero-grid absolute inset-0 pointer-events-none" />
 
-      <div className="relative z-10 container-custom py-20">
+      {/* Full-background particle network */}
+      <div className="absolute inset-0 pointer-events-none">
+        <ParticleField />
+      </div>
+
+      <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
+      <div className="hero-grid-line hero-grid absolute inset-0 pointer-events-none" />
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark to-transparent pointer-events-none" />
+
+      <div className="relative z-10 w-full container-custom py-20 pt-28 lg:pt-32">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl"
+          className="max-w-xl lg:max-w-6xl text-left"
         >
+          {/* Badge */}
           <motion.div variants={staggerItem}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-purple/15 border border-royal-purple/25 mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-soft-lavender animate-pulse" />
-              <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide uppercase">About Aneeras</span>
+              <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide">
+                About Aneeras
+              </span>
             </span>
           </motion.div>
 
-          <div className="overflow-hidden mb-6">
-            <h1 className="font-space font-bold text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.08] tracking-tight">
-              {headline.split('').map((char, i) => (
+          {/* Headline with char animation */}
+          <div className="overflow-hidden mb-2">
+            <h1 className="font-space font-bold text-5xl sm:text-6xl xl:text-7xl text-white leading-[1.08] tracking-tight">
+              {line1.split('').map((char, i) => (
+                <span
+                  key={i}
+                  className={`char inline-block ${char === ' ' ? 'whitespace-pre' : ''}`}
+                >
+                  {char}
+                </span>
+              ))}
+            </h1>
+          </div>
+          <div className="overflow-hidden mb-8">
+            <h1 className="font-space font-bold text-5xl sm:text-6xl xl:text-7xl text-gradient leading-[1.08] tracking-tight">
+              {line2.split('').map((char, i) => (
                 <span
                   key={i}
                   className={`char inline-block ${char === ' ' ? 'whitespace-pre' : ''}`}
@@ -58,16 +88,10 @@ export default function AboutHero() {
             </h1>
           </div>
 
-          <motion.h2
-            variants={staggerItem}
-            className="font-space font-bold text-5xl sm:text-6xl lg:text-7xl text-gradient mb-8 leading-[1.08] tracking-tight"
-          >
-            Our Vision.
-          </motion.h2>
-
+          {/* Subtext */}
           <motion.p
             variants={staggerItem}
-            className="font-inter text-white/55 text-xl leading-relaxed max-w-2xl"
+            className="font-inter text-white/55 text-lg lg:text-xl leading-relaxed max-w-4xl"
           >
             We're a passionate team of builders, designers, and dreamers creating digital products that genuinely move people — emotionally, physically, and culturally.
           </motion.p>

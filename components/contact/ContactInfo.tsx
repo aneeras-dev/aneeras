@@ -15,16 +15,16 @@ const contactDetails = [
   {
     icon: Phone,
     label: 'Phone',
-    value: '+91 98765 43210',
-    href: 'tel:+919876543210',
+    value: '+91 8428166373',
+    href: 'tel:+918428166373',
     description: 'Mon–Fri, 9am–6pm IST',
   },
   {
     icon: MapPin,
     label: 'Location',
-    value: 'Bangalore, India',
+    value: 'Puducherry, India',
     href: '#',
-    description: 'Silicon Valley of India',
+    description: 'France of India',
   },
 ]
 

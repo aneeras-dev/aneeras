@@ -3,7 +3,6 @@ import Hero from '@/components/home/Hero'
 import FeaturedProduct from '@/components/home/FeaturedProduct'
 import Technologies from '@/components/home/Technologies'
 import WhyAneeras from '@/components/home/WhyAneeras'
-import Testimonials from '@/components/home/Testimonials'
 import CTABanner from '@/components/home/CTABanner'
 
 export const metadata: Metadata = {
@@ -19,7 +18,6 @@ export default function HomePage() {
       <FeaturedProduct />
       <Technologies />
       <WhyAneeras />
-      <Testimonials />
       <CTABanner />
     </>
   )
