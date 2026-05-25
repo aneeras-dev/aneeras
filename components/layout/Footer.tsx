@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Twitter, Linkedin, Github, Instagram, ArrowUpRight, Mail } from 'lucide-react'
+import { Twitter, Linkedin,  ArrowUpRight, Mail } from 'lucide-react'
 
 const footerLinks = {
   Company: [
@@ -15,20 +15,20 @@ const footerLinks = {
     { label: 'Coming Soon', href: '#' },
   ],
   Legal: [
-    { label: 'Privacy Policy', href: '/legal/privacy-policy.pdf', external: true },
-    { label: 'Terms of Service', href: '/legal/terms-of-Use.pdf', external: true },
-    { label: 'Cookie Policy', href: '/legal/Cookie.pdf', external: true },
-    { label: 'Data Privacy', href: '/legal/data-privacy.pdf', external: true },
-    { label: 'EULA', href: '/legal/eula.pdf', external: true },
+    { label: 'Privacy Policy', href: '/legal/privacy-policy' },
   ],
 }
 
 const socials = [
-  { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/aneeras' },
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/aneeras' },
-  { icon: Github, label: 'GitHub', href: 'https://github.com/aneeras' },
-  { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/aneeras' },
-]
+  { icon: Twitter, label: "Twitter", href: "https://twitter.com/aneerasofficial" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/aneeras/",
+  },
+  
+ 
+];
 
 export default function Footer() {
   return (
