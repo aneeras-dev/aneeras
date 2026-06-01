@@ -46,8 +46,8 @@ export default function MissionVision() {
       <div className="container-custom">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -66,8 +66,7 @@ export default function MissionVision() {
         <motion.div
           variants={staggerContainer}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          animate="visible"
           className="grid md:grid-cols-3 gap-6"
         >
           {cards.map((card) => (
@@ -85,8 +84,8 @@ export default function MissionVision() {
 
         {/* Culture note */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mt-12 glass rounded-3xl p-10 lg:p-14 text-center max-w-4xl mx-auto glow-card"

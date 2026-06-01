@@ -49,8 +49,7 @@ export default function ContactInfo() {
       <motion.div
         variants={staggerContainer}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
+        animate="visible"
         className="space-y-4"
       >
         {contactDetails.map((detail) => (
@@ -78,8 +77,8 @@ export default function ContactInfo() {
 
       {/* Socials */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ y: 20 }}
+        whileInView={{ y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className="glass rounded-2xl p-6"
@@ -103,8 +102,8 @@ export default function ContactInfo() {
 
       {/* Quick response note */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ y: 20 }}
+        whileInView={{ y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
         className="bg-gradient-to-br from-royal-purple/15 to-deep-indigo/10 border border-royal-purple/20 rounded-2xl p-6"

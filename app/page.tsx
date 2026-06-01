@@ -6,9 +6,21 @@ import WhyAneeras from '@/components/home/WhyAneeras'
 import CTABanner from '@/components/home/CTABanner'
 
 export const metadata: Metadata = {
-  title: 'Aneeras — Building Digital Products That Move People',
+  title: { absolute: 'Aneeras — Building Digital Products That Move People' },
   description:
     'Aneeras is a product-first startup creating next-generation digital experiences. Explore Tripknot — the smart travel companion built for modern explorers.',
+  alternates: { canonical: 'https://aneeras.com' },
+  openGraph: {
+    title: 'Aneeras — Building Digital Products That Move People',
+    description:
+      'Aneeras is a product-first startup creating next-generation digital experiences. Explore Tripknot — the smart travel companion built for modern explorers.',
+    url: 'https://aneeras.com',
+  },
+  twitter: {
+    title: 'Aneeras — Building Digital Products That Move People',
+    description:
+      'Aneeras is a product-first startup creating next-generation digital experiences. Explore Tripknot — the smart travel companion built for modern explorers.',
+  },
 }
 
 export default function HomePage() {

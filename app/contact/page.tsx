@@ -3,6 +3,25 @@ import ContactHero from '@/components/contact/ContactHero'
 import ContactForm from '@/components/contact/ContactForm'
 import ContactInfo from '@/components/contact/ContactInfo'
 
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Aneeras — Let\'s Build Together',
+  description: 'Get in touch with Aneeras. Whether you have a partnership idea, a product question, or just want to say hi — we respond within 24 hours.',
+  url: 'https://aneeras.com/contact',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Aneeras',
+    url: 'https://aneeras.com',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'hello@aneeras.com',
+      contactType: 'customer support',
+      availableLanguage: 'English',
+    },
+  },
+}
+
 export const metadata: Metadata = {
   title: 'Contact',
   description:
@@ -23,6 +42,10 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       <ContactHero />
       <section className="section-padding bg-dark-100 relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

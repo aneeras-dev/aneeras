@@ -48,7 +48,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'Aneeras', url: 'https://aneeras.com' }],
   creator: 'Aneeras',
   publisher: 'Aneeras',
-  alternates: { canonical: 'https://aneeras.com' },
   openGraph: {
     type: 'website',
     locale: 'en_US',

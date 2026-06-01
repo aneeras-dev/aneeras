@@ -22,8 +22,8 @@ export default function AboutStats() {
       <div className="container-custom">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -42,8 +42,7 @@ export default function AboutStats() {
         <motion.div
           variants={staggerContainer}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
+          animate="visible"
           className="grid grid-cols-2 md:grid-cols-3 gap-5"
         >
           {stats.map((stat) => (
