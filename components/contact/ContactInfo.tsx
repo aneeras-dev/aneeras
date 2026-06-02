@@ -63,11 +63,11 @@ export default function ContactInfo() {
                   <detail.icon size={20} className="text-soft-lavender" />
                 </div>
                 <div>
-                  <div className="font-inter text-white/40 text-xs mb-0.5">{detail.label}</div>
-                  <div className="font-space font-semibold text-white text-base group-hover:text-soft-lavender transition-colors duration-200">
+                  <div className="font-inter text-[#4259A7]/50 text-xs mb-0.5">{detail.label}</div>
+                  <div className="font-space font-semibold text-[#4259A7] text-base group-hover:text-soft-lavender transition-colors duration-200">
                     {detail.value}
                   </div>
-                  <div className="font-inter text-white/35 text-xs mt-0.5">{detail.description}</div>
+                  <div className="font-inter text-[#9CAED9] text-xs mt-0.5">{detail.description}</div>
                 </div>
               </a>
             </GlowCard>
@@ -83,7 +83,7 @@ export default function ContactInfo() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="glass rounded-2xl p-6"
       >
-        <p className="font-space font-semibold text-white/70 text-sm mb-4 uppercase tracking-wider text-xs">Follow Us</p>
+        <p className="font-space font-semibold text-[#4259A7]/70 text-sm mb-4 uppercase tracking-wider text-xs">Follow Us</p>
         <div className="flex items-center gap-3">
           {socials.map((social) => (
             <a
@@ -92,7 +92,7 @@ export default function ContactInfo() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.label}
-              className={`w-11 h-11 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center text-white/50 ${social.color} hover:border-white/20 hover:bg-white/10 hover:shadow-glow-soft transition-all duration-200`}
+              className={`w-11 h-11 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center text-[#4259A7]/50 ${social.color} hover:border-white/20 hover:bg-white/10 hover:shadow-glow-soft transition-all duration-200`}
             >
               <social.icon size={18} />
             </a>
@@ -111,8 +111,8 @@ export default function ContactInfo() {
         <div className="flex items-start gap-3">
           <div className="text-2xl flex-shrink-0">⚡</div>
           <div>
-            <p className="font-space font-semibold text-white text-sm mb-1">Fast Response Guaranteed</p>
-            <p className="font-inter text-white/45 text-xs leading-relaxed">
+            <p className="font-space font-semibold text-[#4259A7] text-sm mb-1">Fast Response Guaranteed</p>
+            <p className="font-inter text-[#4259A7]/60 text-xs leading-relaxed">
               We respond to all inquiries within 24 hours on business days. For urgent matters, reach us on Twitter.
             </p>
           </div>

@@ -37,7 +37,7 @@ const team = [
 
 export default function TeamSection() {
   return (
-    <section className="section-padding bg-dark relative overflow-hidden">
+    <section className="section-padding bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute -right-40 top-1/3 w-[500px] h-[500px] bg-royal-purple/10 rounded-full blur-[140px] pointer-events-none" />
 

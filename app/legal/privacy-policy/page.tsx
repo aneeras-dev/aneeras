@@ -210,12 +210,12 @@ const sections = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-dark">
+    <main className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-dark">
+      <section className="relative overflow-hidden bg-white">
         <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
         <div className="hero-grid absolute inset-0 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-dark to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
 
         <div className="relative z-10 w-full container-custom pt-28 pb-14">
           <Link
@@ -242,7 +242,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* Content */}
-      <section className="bg-dark pb-24">
+      <section className="bg-white pb-24">
         <div className="container-custom">
           <div className="max-w-3xl space-y-10">
             {sections.map(({ number, title, content }) => (

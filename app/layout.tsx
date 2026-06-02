@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Poppins, Inter, Space_Grotesk } from 'next/font/google'
+import { Plus_Jakarta_Sans, Inter } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
@@ -12,23 +12,16 @@ import JsonLd from '@/components/seo/JsonLd'
 const GTM_ID = 'GTM-T46BLM7P'
 const GA_ID  = 'G-4T1QBN67SK'
 
-const poppins = Poppins({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-poppins',
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-syne',
   display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
-  display: 'swap',
-})
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-space',
   display: 'swap',
 })
 
@@ -86,7 +79,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${inter.variable} ${spaceGrotesk.variable}`}
+      className={`${plusJakartaSans.variable} ${inter.variable}`}
     >
       <head>
         {/* Google Tag Manager */}
@@ -114,7 +107,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
       </head>
-      <body className="bg-dark text-cream antialiased overflow-x-hidden">
+      <body className="bg-white text-[#111827] antialiased overflow-x-hidden">
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

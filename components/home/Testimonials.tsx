@@ -36,7 +36,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="section-padding bg-dark relative overflow-hidden">
+    <section className="section-padding bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute -bottom-16 right-0 w-[500px] h-[400px] bg-deep-indigo/15 rounded-full blur-[120px] pointer-events-none" />
 

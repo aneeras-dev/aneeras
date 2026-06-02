@@ -95,9 +95,9 @@ export default function ParticleField() {
       // Cursor glow
       if (mouse.x > -100) {
         const mg = ctx.createRadialGradient(mouse.lx, mouse.ly, 0, mouse.lx, mouse.ly, 180)
-        mg.addColorStop(0, 'rgba(139,140,201,0.16)')
-        mg.addColorStop(0.5, 'rgba(75,74,168,0.05)')
-        mg.addColorStop(1, 'rgba(75,74,168,0)')
+        mg.addColorStop(0, 'rgba(66,89,167,0.10)')
+        mg.addColorStop(0.5, 'rgba(66,89,167,0.03)')
+        mg.addColorStop(1, 'rgba(66,89,167,0)')
         ctx.fillStyle = mg
         ctx.fillRect(0, 0, W, H)
       }
@@ -134,8 +134,8 @@ export default function ParticleField() {
         // Hub glow aura
         if (d.isHub) {
           const aura = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r * 6)
-          aura.addColorStop(0, nearMouse ? 'rgba(139,140,201,0.22)' : 'rgba(75,74,168,0.13)')
-          aura.addColorStop(1, 'rgba(75,74,168,0)')
+          aura.addColorStop(0, nearMouse ? 'rgba(66,89,167,0.18)' : 'rgba(66,89,167,0.08)')
+          aura.addColorStop(1, 'rgba(66,89,167,0)')
           ctx.fillStyle = aura
           ctx.beginPath()
           ctx.arc(d.x, d.y, d.r * 6, 0, Math.PI * 2)
@@ -145,8 +145,8 @@ export default function ParticleField() {
         ctx.beginPath()
         ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2)
         ctx.fillStyle = nearMouse
-          ? d.isHub ? 'rgba(210,210,240,0.9)' : 'rgba(139,140,201,0.85)'
-          : d.isHub ? 'rgba(139,140,201,0.65)' : 'rgba(75,74,168,0.45)'
+          ? d.isHub ? 'rgba(66,89,167,0.9)' : 'rgba(66,89,167,0.7)'
+          : d.isHub ? 'rgba(66,89,167,0.5)' : 'rgba(156,174,217,0.55)'
         ctx.fill()
       }
 
@@ -159,7 +159,7 @@ export default function ParticleField() {
             ctx.beginPath()
             ctx.moveTo(dots[i].x, dots[i].y)
             ctx.lineTo(dots[j].x, dots[j].y)
-            ctx.strokeStyle = `rgba(139,140,201,${alpha})`
+            ctx.strokeStyle = `rgba(66,89,167,${alpha})`
             ctx.lineWidth = dots[i].isHub && dots[j].isHub ? 0.7 : 0.35
             ctx.stroke()
           }

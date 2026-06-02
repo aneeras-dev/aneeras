@@ -3,118 +3,77 @@ import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 export default function CursorGlow() {
-  const [hovering, setHovering] = useState(false)
   const [visible, setVisible] = useState(false)
+  const [clicking, setClicking] = useState(false)
 
-  // Raw mouse position — drives the inner dot (no lag)
-  const dotX = useMotionValue(-200)
-  const dotY = useMotionValue(-200)
+  const mouseX = useMotionValue(-200)
+  const mouseY = useMotionValue(-200)
 
-  // Ring follows with spring lag for the trailing effect
-  const ringX = useSpring(dotX, { stiffness: 130, damping: 22, mass: 0.4 })
-  const ringY = useSpring(dotY, { stiffness: 130, damping: 22, mass: 0.4 })
-
-  // Ambient glow trails even further behind
-  const glowX = useSpring(dotX, { stiffness: 60, damping: 18, mass: 0.6 })
-  const glowY = useSpring(dotY, { stiffness: 60, damping: 18, mass: 0.6 })
+  const x = useSpring(mouseX, { stiffness: 400, damping: 30, mass: 0.3 })
+  const y = useSpring(mouseY, { stiffness: 400, damping: 30, mass: 0.3 })
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
-    const isTouchDevice = 'ontouchstart' in window
-    if (isTouchDevice) return
+    if (typeof window === 'undefined' || 'ontouchstart' in window) return
 
     const onMove = (e: MouseEvent) => {
-      dotX.set(e.clientX)
-      dotY.set(e.clientY)
-      if (!visible) setVisible(true)
-
-      // Detect interactive elements under cursor
-      const target = e.target as Element
-      const interactive = target.closest(
-        'a, button, [role="button"], input, textarea, select, label, [data-cursor-hover]'
-      )
-      setHovering(!!interactive)
+      mouseX.set(e.clientX)
+      mouseY.set(e.clientY)
+      setVisible(true)
     }
-
+    const onDown = () => setClicking(true)
+    const onUp = () => setClicking(false)
     const onLeave = () => setVisible(false)
     const onEnter = () => setVisible(true)
 
     window.addEventListener('mousemove', onMove)
+    window.addEventListener('mousedown', onDown)
+    window.addEventListener('mouseup', onUp)
     document.addEventListener('mouseleave', onLeave)
     document.addEventListener('mouseenter', onEnter)
 
     return () => {
       window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mousedown', onDown)
+      window.removeEventListener('mouseup', onUp)
       document.removeEventListener('mouseleave', onLeave)
       document.removeEventListener('mouseenter', onEnter)
     }
-  }, [dotX, dotY, visible])
+  }, [mouseX, mouseY])
 
   return (
     <div className="hidden lg:block">
-      {/* ── Ambient glow blob ── */}
-      <motion.div
-        className="fixed pointer-events-none z-[9996]"
-        style={{
-          x: glowX,
-          y: glowY,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-      >
-        <motion.div
-          animate={{ opacity: visible ? 1 : 0 }}
-          transition={{ duration: 0.4 }}
-          className="w-[380px] h-[380px] rounded-full bg-royal-purple/8 blur-[80px]"
-        />
-      </motion.div>
-
-      {/* ── Outer ring (spring lag) ── */}
-      <motion.div
-        className="fixed pointer-events-none z-[9998]"
-        style={{
-          x: ringX,
-          y: ringY,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
-      >
-        <motion.div
-          animate={{
-            width: hovering ? 44 : 30,
-            height: hovering ? 44 : 30,
-            opacity: visible ? 1 : 0,
-            backgroundColor: hovering
-              ? 'rgba(139, 140, 201, 0.08)'
-              : 'rgba(139, 140, 201, 0)',
-            borderColor: hovering
-              ? 'rgba(139, 140, 201, 0.9)'
-              : 'rgba(139, 140, 201, 0.45)',
-          }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
-          style={{ borderWidth: 1.5, borderStyle: 'solid' }}
-          className="rounded-full"
-        />
-      </motion.div>
-
-      {/* ── Inner dot (exact position, no lag) ── */}
+      {/* Arrow cursor — tip anchored at exact mouse position */}
       <motion.div
         className="fixed pointer-events-none z-[9999]"
-        style={{
-          x: dotX,
-          y: dotY,
-          translateX: '-50%',
-          translateY: '-50%',
-        }}
+        style={{ x, y, translateX: 0, translateY: 0 }}
       >
-        <motion.div
+        <motion.svg
+          width="22"
+          height="26"
+          viewBox="0 0 22 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
           animate={{
-            scale: hovering ? 0 : 1,
             opacity: visible ? 1 : 0,
+            scale: clicking ? 0.85 : 1,
           }}
-          transition={{ duration: 0.15, ease: 'easeOut' }}
-          className="w-[5px] h-[5px] rounded-full bg-white"
-        />
+          transition={{ duration: 0.1, ease: 'easeOut' }}
+          style={{ transformOrigin: '0 0' }}
+        >
+          {/* Arrow body fill */}
+          <path
+            d="M1 1L1 19L5.5 14L9 22.5L12.5 21L9 12.5H17L1 1Z"
+            fill="#4259A7"
+          />
+          {/* Arrow outline for crispness */}
+          <path
+            d="M1 1L1 19L5.5 14L9 22.5L12.5 21L9 12.5H17L1 1Z"
+            stroke="white"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+          />
+        </motion.svg>
       </motion.div>
     </div>
   )

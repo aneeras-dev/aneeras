@@ -80,7 +80,7 @@ export default function CompanyTimeline() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="section-padding bg-dark-100 relative overflow-hidden">
+    <section ref={sectionRef} className="section-padding bg-[#F5F7FC] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute -right-32 top-1/2 w-[400px] h-[400px] bg-royal-purple/10 rounded-full blur-[100px] pointer-events-none" />
 
@@ -114,7 +114,7 @@ export default function CompanyTimeline() {
               <div key={`${item.year}-${item.quarter}`} className="timeline-item relative flex gap-8">
                 {/* Dot */}
                 <div className="relative flex-shrink-0 z-10">
-                  <div className={`w-12 h-12 rounded-2xl bg-dark-100 border border-white/10 flex flex-col items-center justify-center`}>
+                  <div className={`w-12 h-12 rounded-2xl bg-[#F5F7FC] border border-white/10 flex flex-col items-center justify-center`}>
                     <span className={`font-space font-bold text-[10px] ${item.textColor}`}>{item.quarter}</span>
                     <span className="font-inter text-white/30 text-[8px]">{item.year}</span>
                   </div>

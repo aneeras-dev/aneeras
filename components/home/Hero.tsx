@@ -1,140 +1,107 @@
 'use client'
-import { useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { ArrowRight, Play } from 'lucide-react'
-import { gsap } from 'gsap'
-import ParticleField from '@/components/ui/ParticleField'
-import FloatingBlobs from '@/components/ui/FloatingBlobs'
-import { staggerContainer, staggerItem } from '@/lib/animations'
+import { ArrowRight, ArrowUpRight, Star } from 'lucide-react'
+import PhoneMockup from '@/components/ui/PhoneMockup'
 
 const stats = [
   { value: '10K+', label: 'Product Users' },
-  { value: '2026', label: 'Founded' },
   { value: '4.9★', label: 'User Rating' },
+  { value: '2026', label: 'Founded' },
 ]
 
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.hero-grid-line',
-        { opacity: 0 },
-        { opacity: 1, duration: 2, ease: 'power1.inOut', stagger: 0.1 }
-      )
-    }, heroRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex items-center overflow-hidden bg-dark"
-    >
-      {/* Animated blobs */}
-      <FloatingBlobs />
-
-      {/* Full-background particle network */}
-      <div className="absolute inset-0 pointer-events-none">
-        <ParticleField />
-      </div>
-
-      {/* Hero gradient */}
-      <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
-
-      {/* Subtle grid */}
-      <div className="hero-grid-line hero-grid absolute inset-0 pointer-events-none" />
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark to-transparent pointer-events-none" />
-
-      <div className="relative z-10 w-full container-custom py-20 pt-28 lg:pt-32">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="max-w-xl lg:max-w-6xl text-left"
-          >
-            {/* Badge */}
-            <motion.div variants={staggerItem}>
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-purple/15 border border-royal-purple/25 mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-soft-lavender animate-pulse" />
-                <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide">
-                  Product-first Startup · Est. 2026                </span>
-              </span>
-            </motion.div>
-
-            {/* Headline */}
-            <motion.h1
-              variants={staggerItem}
-              className="font-space font-bold text-5xl sm:text-6xl xl:text-7xl text-white leading-[1.08] tracking-tight mb-6"
-            >
+    <section className="bg-white pt-16 overflow-hidden">
+      {/* Two-column header */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          {/* Left — giant heading */}
+          <div>
+            <h1 className="font-syne font-bold text-[#111827] text-5xl sm:text-6xl xl:text-[72px] leading-[1.06] tracking-tight">
               Building Digital
-              <span className="block text-gradient">Products That Move People.</span>
-            </motion.h1>
+              <br />
+              Products That
+              <br />
+              <span className="text-gradient">Move People.</span>
+            </h1>
+          </div>
 
-            {/* Subtext */}
-            <motion.p
-              variants={staggerItem}
-              className="font-inter text-white/55 text-lg lg:text-xl leading-relaxed mb-10 max-w-4xl"
-            >
+          {/* Right — description + CTA + stats */}
+          <div className="lg:pt-3 flex flex-col gap-8">
+            <p className="text-gray-500 text-lg leading-relaxed max-w-md">
               Aneeras creates next-generation applications focused on real-world experiences and modern technology. We build for the humans behind the screen.
-            </motion.p>
+            </p>
 
-            {/* CTAs */}
-            <motion.div variants={staggerItem} className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-accent-gradient text-white font-inter font-semibold text-sm transition-all duration-300 hover:shadow-glow hover:scale-[1.03] active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#4259A7] text-white font-inter font-semibold text-sm hover:bg-[#2d3d7c] transition-colors duration-200"
               >
                 Our Story
-                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200" />
+                <ArrowRight size={15} />
               </Link>
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/15 text-white/70 hover:text-white hover:border-white/30 hover:bg-white/5 font-inter font-medium text-sm transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-200 text-gray-600 font-inter font-medium text-sm hover:border-gray-300 hover:text-[#111827] transition-colors duration-200"
               >
-                <span className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
-                  <Play size={9} className="fill-white ml-0.5" />
-                </span>
                 Get in Touch
               </Link>
-            </motion.div>
+            </div>
 
             {/* Stats */}
-            <motion.div
-              variants={staggerItem}
-              className="flex items-center gap-8 mt-12 pt-8 border-t border-white/8"
-            >
+            <div className="flex items-center gap-8 pt-6 border-t border-gray-100">
               {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="font-space font-bold text-2xl text-white">{stat.value}</div>
-                  <div className="font-inter text-white/40 text-xs mt-0.5">{stat.label}</div>
+                <div key={stat.label}>
+                  <div className="font-syne font-bold text-xl text-[#111827]">{stat.value}</div>
+                  <div className="text-gray-400 text-xs mt-0.5 font-inter">{stat.label}</div>
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Scroll hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex flex-col items-center gap-1"
-        >
-          <div className="w-px h-6 bg-gradient-to-b from-white/30 to-transparent" />
-          <div className="w-1 h-1 rounded-full bg-white/30" />
-        </motion.div>
-      </motion.div>
+      {/* Mockup showcase — light gray card */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <div className="relative bg-[#F5F7FC] rounded-3xl overflow-hidden flex items-center justify-center min-h-[480px] lg:min-h-[580px]">
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 hero-dot-grid opacity-50" />
+
+          {/* Floating badge — top left */}
+          <div className="absolute top-8 left-8 bg-white rounded-2xl px-4 py-3 shadow-sm border border-gray-100 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="font-inter text-sm font-medium text-[#111827]">Product-first Startup</span>
+          </div>
+
+          {/* Floating badge — top right */}
+          <div className="absolute top-8 right-8 bg-white rounded-2xl px-4 py-3 shadow-sm border border-gray-100">
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={12} className="fill-amber-400 text-amber-400" />
+              ))}
+              <span className="font-inter text-sm font-semibold text-[#111827] ml-1">4.9</span>
+            </div>
+            <div className="text-gray-400 text-xs mt-0.5 font-inter">User Rating</div>
+          </div>
+
+          {/* Phone mockup */}
+          <div className="relative z-10 py-8">
+            <PhoneMockup />
+          </div>
+
+          {/* Floating badge — bottom left */}
+          <div className="absolute bottom-8 left-8 bg-white rounded-2xl px-4 py-3 shadow-sm border border-gray-100">
+            <div className="font-syne font-bold text-[#111827] text-sm">10,000+</div>
+            <div className="text-gray-400 text-xs font-inter">Early Users</div>
+          </div>
+
+          {/* Floating badge — bottom right */}
+          <div className="absolute bottom-8 right-8 bg-[#4259A7] rounded-2xl px-4 py-3 shadow-sm flex items-center gap-2">
+            <ArrowUpRight size={16} className="text-white" />
+            <span className="font-inter text-sm font-semibold text-white">Explore Tripknot</span>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

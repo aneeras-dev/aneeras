@@ -14,7 +14,7 @@ const stats = [
 
 export default function AboutStats() {
   return (
-    <section className="section-padding bg-dark-100 relative overflow-hidden">
+    <section className="section-padding bg-[#F5F7FC] relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-royal-purple/10 rounded-full blur-[120px] pointer-events-none" />
@@ -30,11 +30,11 @@ export default function AboutStats() {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-purple/15 border border-royal-purple/25 mb-5">
             <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide uppercase">Aneeras by the Numbers</span>
           </span>
-          <h2 className="font-space font-bold text-4xl sm:text-5xl text-white mb-4 tracking-tight">
+          <h2 className="font-space font-bold text-4xl sm:text-5xl text-[#4259A7] mb-4 tracking-tight">
             Early Days,{' '}
             <span className="text-gradient">Real Momentum</span>
           </h2>
-          <p className="font-inter text-white/50 text-lg max-w-xl mx-auto">
+          <p className="font-inter text-[#4259A7]/60 text-lg max-w-xl mx-auto">
             We're just getting started — and the numbers already say something.
           </p>
         </motion.div>
@@ -57,8 +57,8 @@ export default function AboutStats() {
               <div className="font-space font-bold text-4xl lg:text-5xl text-gradient mb-2">
                 <AnimatedCounter end={stat.end} suffix={stat.suffix} />
               </div>
-              <div className="font-space font-semibold text-white/80 text-base mb-1">{stat.label}</div>
-              <div className="font-inter text-white/35 text-xs">{stat.description}</div>
+              <div className="font-space font-semibold text-[#4259A7]/80 text-base mb-1">{stat.label}</div>
+              <div className="font-inter text-[#9CAED9] text-xs">{stat.description}</div>
             </motion.div>
           ))}
         </motion.div>

@@ -39,7 +39,7 @@ const cards = [
 
 export default function MissionVision() {
   return (
-    <section className="section-padding bg-dark relative overflow-hidden">
+    <section className="section-padding bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute -left-32 top-1/2 w-[400px] h-[400px] bg-royal-purple/15 rounded-full blur-[120px] pointer-events-none" />
 
@@ -54,11 +54,11 @@ export default function MissionVision() {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-royal-purple/15 border border-royal-purple/25 mb-5">
             <span className="text-soft-lavender font-inter text-xs font-medium tracking-wide uppercase">Core Values</span>
           </span>
-          <h2 className="font-space font-bold text-4xl sm:text-5xl text-white mb-4 tracking-tight">
+          <h2 className="font-space font-bold text-4xl sm:text-5xl text-[#4259A7] mb-4 tracking-tight">
             What We{' '}
             <span className="text-gradient">Stand For</span>
           </h2>
-          <p className="font-inter text-white/50 text-lg max-w-xl mx-auto">
+          <p className="font-inter text-[#4259A7]/60 text-lg max-w-xl mx-auto">
             The principles that guide every decision we make at Aneeras.
           </p>
         </motion.div>
@@ -75,8 +75,8 @@ export default function MissionVision() {
                 <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${card.iconBg} mb-6`}>
                   <card.icon size={26} className={card.iconColor} />
                 </div>
-                <h3 className="font-space font-bold text-white text-xl mb-4">{card.title}</h3>
-                <p className="font-inter text-white/55 text-sm leading-relaxed">{card.description}</p>
+                <h3 className="font-space font-bold text-[#4259A7] text-xl mb-4">{card.title}</h3>
+                <p className="font-inter text-[#9CAED9] text-sm leading-relaxed">{card.description}</p>
               </GlowCard>
             </motion.div>
           ))}
@@ -91,10 +91,10 @@ export default function MissionVision() {
           className="mt-12 glass rounded-3xl p-10 lg:p-14 text-center max-w-4xl mx-auto glow-card"
         >
           <div className="text-4xl mb-5">🚀</div>
-          <h3 className="font-space font-bold text-white text-2xl sm:text-3xl mb-4">
+          <h3 className="font-space font-bold text-[#4259A7] text-2xl sm:text-3xl mb-4">
             Startup Culture, Enterprise Quality
           </h3>
-          <p className="font-inter text-white/50 text-base leading-relaxed max-w-2xl mx-auto">
+          <p className="font-inter text-[#4259A7]/60 text-base leading-relaxed max-w-2xl mx-auto">
             We move with the urgency of a startup but build with the rigor of an enterprise. Fast iteration, strong foundations, and an obsession with quality — that's the Aneeras way.
           </p>
         </motion.div>

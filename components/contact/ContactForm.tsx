@@ -64,14 +64,14 @@ export default function ContactForm() {
   }
 
   const inputBase =
-    'w-full bg-white/5 border border-white/10 rounded-xl px-4 pt-6 pb-3 text-white font-inter text-sm outline-none transition-all duration-200 placeholder-transparent focus:border-royal-purple/60 focus:bg-white/8 focus:shadow-[0_0_0_1px_rgba(75,74,168,0.3)]'
+    'w-full bg-[#CBD3E5]/25 border border-[#4259A7]/20 rounded-xl px-4 pt-6 pb-3 text-[#4259A7] font-inter text-sm outline-none transition-all duration-200 placeholder-transparent focus:border-[#4259A7]/60 focus:bg-[#4259A7]/5 focus:shadow-[0_0_0_1px_rgba(66,89,167,0.25)]'
 
   const labelBase =
-    'absolute left-4 font-inter text-white/40 transition-all duration-200 pointer-events-none'
+    'absolute left-4 font-inter text-[#4259A7]/50 transition-all duration-200 pointer-events-none'
 
   const floatingLabel = (field: string, value: string) =>
     focusedField === field || value
-      ? 'top-2 text-[10px] text-soft-lavender/80'
+      ? 'top-2 text-[10px] text-[#9CAED9]'
       : 'top-[18px] text-sm'
 
   if (status === 'success') {
@@ -86,11 +86,11 @@ export default function ContactForm() {
           animate={{ scale: 1 }}
           transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.1 }}
         >
-          <CheckCircle size={56} className="text-green-400" />
+          <CheckCircle size={56} className="text-emerald-500" />
         </motion.div>
-        <h3 className="font-space font-bold text-white text-2xl">Message Sent!</h3>
-        <p className="font-inter text-white/50 text-sm max-w-xs leading-relaxed">
-          Thanks, {form.name.split(' ')[0]}! A confirmation has been sent to <span className="text-soft-lavender">{form.email}</span>. We'll get back to you within 24 hours.
+        <h3 className="font-space font-bold text-[#4259A7] text-2xl">Message Sent!</h3>
+        <p className="font-inter text-[#4259A7]/60 text-sm max-w-xs leading-relaxed">
+          Thanks, {form.name.split(' ')[0]}! A confirmation has been sent to <span className="text-[#9CAED9]">{form.email}</span>. We'll get back to you within 24 hours.
         </p>
         <button
           type="button"
@@ -98,7 +98,7 @@ export default function ContactForm() {
             setStatus('idle')
             setForm({ name: '', email: '', subject: subjects[0], message: '' })
           }}
-          className="px-6 py-3 rounded-xl border border-white/15 text-white/70 hover:text-white hover:border-white/30 font-inter text-sm transition-all duration-200"
+          className="px-6 py-3 rounded-xl border border-[#4259A7]/20 text-[#4259A7]/70 hover:text-[#4259A7] hover:border-[#4259A7]/40 font-inter text-sm transition-all duration-200"
         >
           Send Another
         </button>
@@ -109,20 +109,18 @@ export default function ContactForm() {
   return (
     <motion.form
       onSubmit={handleSubmit}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 20 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="glass rounded-3xl p-8 lg:p-10 space-y-5"
     >
-      <h2 className="font-space font-bold text-white text-2xl mb-2">Send a Message</h2>
-      <p className="font-inter text-white/45 text-sm mb-6">
+      <h2 className="font-space font-bold text-[#4259A7] text-2xl mb-2">Send a Message</h2>
+      <p className="font-inter text-[#4259A7]/55 text-sm mb-6">
         Fill in the form and we'll get back to you shortly.
       </p>
 
-      {/* Name + Email row */}
       <div className="grid sm:grid-cols-2 gap-5">
-        {/* Name */}
         <div className="relative">
           <input
             type="text"
@@ -141,7 +139,6 @@ export default function ContactForm() {
           </label>
         </div>
 
-        {/* Email */}
         <div className="relative">
           <input
             type="email"
@@ -161,7 +158,6 @@ export default function ContactForm() {
         </div>
       </div>
 
-      {/* Subject */}
       <div className="relative">
         <select
           name="subject"
@@ -173,22 +169,21 @@ export default function ContactForm() {
           className={`${inputBase} appearance-none cursor-pointer`}
         >
           {subjects.map((s) => (
-            <option key={s} value={s} className="bg-dark-300 text-white">
+            <option key={s} value={s} className="bg-[#CBD3E5] text-[#4259A7]">
               {s}
             </option>
           ))}
         </select>
-        <label htmlFor="subject" className="absolute left-4 top-2 text-[10px] text-soft-lavender/80 font-inter pointer-events-none">
+        <label htmlFor="subject" className="absolute left-4 top-2 text-[10px] text-[#9CAED9] font-inter pointer-events-none">
           Subject
         </label>
         <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-          <svg className="w-4 h-4 text-white/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg className="w-4 h-4 text-[#4259A7]/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </div>
       </div>
 
-      {/* Message */}
       <div className="relative">
         <textarea
           name="message"
@@ -207,19 +202,17 @@ export default function ContactForm() {
         </label>
       </div>
 
-      {/* Error banner */}
       {status === 'error' && (
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-3 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 font-inter text-sm"
+          className="flex items-center gap-3 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 font-inter text-sm"
         >
           <AlertCircle size={16} className="flex-shrink-0" />
           {errorMsg}
         </motion.div>
       )}
 
-      {/* Submit */}
       <button
         type="submit"
         disabled={status === 'loading'}

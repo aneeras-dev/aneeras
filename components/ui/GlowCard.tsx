@@ -9,7 +9,7 @@ interface GlowCardProps {
   glowColor?: string
 }
 
-export default function GlowCard({ children, className, glowColor = 'rgba(75, 74, 168, 0.4)' }: GlowCardProps) {
+export default function GlowCard({ children, className, glowColor = 'rgba(66, 89, 167, 0.25)' }: GlowCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
@@ -38,7 +38,7 @@ export default function GlowCard({ children, className, glowColor = 'rgba(75, 74
     <div
       ref={cardRef}
       className={cn(
-        'relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 transition-all duration-300 hover:border-royal-purple/40 group',
+        'relative overflow-hidden rounded-2xl bg-[#4259A7]/4 border border-[#4259A7]/15 transition-all duration-300 hover:border-royal-purple/40 group',
         className
       )}
       onMouseMove={handleMouseMove}

@@ -14,13 +14,13 @@ interface Props {
 
 export default function LegalPageLayout({ title, description, pdfPath, lastUpdated }: Props) {
   return (
-    <main className="min-h-screen bg-dark">
+    <main className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative flex items-center overflow-hidden bg-dark pt-20">
+      <section className="relative flex items-center overflow-hidden bg-white pt-20">
         <FloatingBlobs />
         <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
         <div className="hero-grid absolute inset-0 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none" />
 
         <div className="relative z-10 w-full container-custom py-14 pt-20">
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
@@ -60,7 +60,7 @@ export default function LegalPageLayout({ title, description, pdfPath, lastUpdat
       </section>
 
       {/* Document */}
-      <section className="bg-dark pb-20">
+      <section className="bg-white pb-20">
         <div className="container-custom">
           <div className="flex justify-end mb-4">
             <a

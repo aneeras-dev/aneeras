@@ -6,7 +6,7 @@ import { staggerContainer, staggerItem } from '@/lib/animations'
 
 export default function ContactHero() {
   return (
-    <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-dark">
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden bg-white">
       <FloatingBlobs />
 
       <div className="absolute inset-0 pointer-events-none">
@@ -15,7 +15,7 @@ export default function ContactHero() {
 
       <div className="absolute inset-0 bg-hero-gradient pointer-events-none" />
       <div className="hero-grid-line hero-grid absolute inset-0 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
 
       <div className="relative z-10 w-full container-custom py-20 pt-28 lg:pt-32">
         <motion.div
@@ -35,7 +35,7 @@ export default function ContactHero() {
 
           <motion.h1
             variants={staggerItem}
-            className="font-space font-bold text-5xl sm:text-6xl xl:text-7xl text-white leading-[1.08] tracking-tight mb-6"
+            className="font-space font-bold text-5xl sm:text-6xl xl:text-7xl text-[#4259A7] leading-[1.08] tracking-tight mb-6"
           >
             Let's Connect
             <span className="block text-gradient">& Build Together.</span>
@@ -43,7 +43,7 @@ export default function ContactHero() {
 
           <motion.p
             variants={staggerItem}
-            className="font-inter text-white/55 text-lg lg:text-xl leading-relaxed max-w-4xl"
+            className="font-inter text-[#4259A7]/60 text-lg lg:text-xl leading-relaxed max-w-4xl"
           >
             Have an idea, a question, or just want to say hi? We'd love to hear from you. Our team typically responds within 24 hours.
           </motion.p>
